@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Paper, TextField } from "@material-ui/core";
 
 
 class SearchBar extends React.Component {
 
-  state= {
+  state = {
     searchTerm: '',
   }
 
-  handleChange= (event)=>{
+  handleChange = (event) => this.setState({searchTerm: event.target.value });
 
-    this.setState({searchTerm: event.target.value });
 
-  }
-
-  handleSubmit= (event)=>{
+  handleSubmit = (event) => {
     const {searchTerm} = this.state;
     const {onFormSubmit} = this.props;
 
@@ -27,12 +24,7 @@ class SearchBar extends React.Component {
     return (
       <Paper elevation={6} style={{ padding: "25px" }}>
         <form onSubmit={this.handleSubmit}>
-        <TextField
-          fullWidth
-          label="Search..."
-          value={searchTerm}
-          onChange={this.handleChange}
-        />
+        <TextField fullWidth label="Search..." onChange={this.handleChange} />
         </form>
       </Paper>
     );
@@ -40,17 +32,3 @@ class SearchBar extends React.Component {
 }
 
 export default SearchBar;
-
-// export default ({ onSubmit }) => {
-//   const [searchTerm, setSearchTerm] = useState("");
-
-//   const handleChange = (event) => setSearchTerm(event.target.value);
-
-//   const onKeyPress = (event) => {
-//     if (event.key === "Enter") {
-//       onSubmit(searchTerm);
-//     }
-//   }
-
-  
-// }
